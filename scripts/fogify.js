@@ -1,14 +1,23 @@
 $.fn.fogify = function(options){
 	this.each(function() {
-		var element = $(this);
-		var imgHeight = element.find('img').height();
-		var imgWidth = element.find('img').width();
-		element.css({
-			position: 'relative',
-			width: imgWidth,
-			height: imgHeight
-		});
-		var settings = $.extend({
+		
+		var element= $(this);
+		var imgHeight;
+		var imgWidth;
+		var settings;
+
+		$(window).on('load', function(){
+
+			imgHeight = element.find('img').height();
+			imgWidth = element.find('img').width();
+			element.css({
+				position: 'relative',
+				width: imgWidth,
+				height: imgHeight
+			});
+
+
+		settings = $.extend({
 			particles: 20,
 			maxVelocity: .5,
 			canvasWidth: element.width(),
@@ -61,7 +70,7 @@ $.fn.fogify = function(options){
 		        // Draw the circle as before, with the addition of using the position and the radius from this object.
 		        this.context.beginPath();
 		        this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-		        this.context.fillStyle = "rgba(0, 255, 255, 1)";
+		        this.context.fillStyle = "rgba(0, 255, 255, 0)";
 		        this.context.fill();
 		        this.context.closePath();
 		    };
@@ -129,7 +138,8 @@ $.fn.fogify = function(options){
 		element.find('canvas').css({
 			position: 'absolute',
 			top: '0',
-			bottom: '0'
+			bottom: '0',
+			left: '0'
 		});
 		context = canvas.getContext('2d');
 		//Set opacity of the fog in order to see the image behind it
@@ -161,7 +171,7 @@ $.fn.fogify = function(options){
 		    };
 
 		    // Once the callback is arranged then set the source of the image
-		    imageObj.src = "http://www.blog.jonnycornwell.com/wp-content/uploads/2012/07/Smoke10.png";
+		    imageObj.src = './styles/images/Smoke10.png';
 
 		    var counter = 0;
 		    if (context) {
@@ -260,8 +270,10 @@ $.fn.fogify = function(options){
 		}
 		// Initialize the scene
 		element.find('canvas').on('click', function() { 
-		    init();
+		    	init();
 		})
+
+		});
 	}); //End of each loop
 
 } //End of plugin function

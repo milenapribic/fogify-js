@@ -55,8 +55,7 @@ hr{
 	.image{
 		width: 33%;
 		img{
-			width: 450px;
-			height:250px;
+			width: 100%;
 		}
 	}
 }
@@ -73,8 +72,7 @@ hr{
 // Guide section
 
 .guide{
-	margin: 5%;
-	padding-left: 225px;
+	margin: 0 auto;
 	padding-top: 25px;
 	width: 73%;
 	h3{
@@ -82,7 +80,11 @@ hr{
 	}
 }
 .guide img{
-	width: 825px;
+	width: 100%;
+}
+.gallery {
+	display: flex;
+	flex-direction: row;
 }
 .guide p, .guide li{
 	font-size: 16px;
@@ -136,4 +138,24 @@ footer p{
 		font-weight: bold;
 	}
 }
+.image img{
+	display: block;
+}
 
+@media (max-width: 480px){
+	.gallery .image{
+		width: 100%;
+		margin: 0 auto;
+	}
+	.guide{
+		width: 100%;
+		padding: 5px;
+	}
+}
+
+@media (max-width: 320px){
+	.gallery .image{
+		width: 75%;
+		margin: 0 auto;
+	}
+}
